@@ -1,12 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
+import App from './App'
+import { Provider } from 'react-redux'
+import store from '@/redux'
+import axios from '@/lib/axios'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// 样式重置
+import '@/style/reset.less'
+import '@/style/index.less'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// 绑定 全局方法 axios
+React.Component.prototype.axios = axios
+
+const render = Component => {
+  ReactDOM.render(
+    <AppContainer>
+      <Provider store={store}>
+        <Component />
+      </Provider>
+    </AppContainer>,
+    document.getElementById('root')
+  )
+}
+
+render(App)
+
+// ReactDOM.render(<App />, document.getElementById('root'))
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    render(App)
+  })
+}

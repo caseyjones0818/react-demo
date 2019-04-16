@@ -1,7 +1,6 @@
-import lazy from '@/components/helper/lazy'
-const Login = lazy(() => import('@/views/admin/login'))
+import Root from '@/views/root'
 
 export default {
   path: '',
-  childRoutes: [{ path: 'login', component: Login }]
+  component: Root
 }

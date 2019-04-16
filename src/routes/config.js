@@ -1,15 +1,8 @@
 // import PageNotFound from '@/components/NotFound'
-// import homeRoutes from '@/views/web/routes'
-// import examplesRoute from '@/examples/routes'
-// import adminRoutes from '@/views/admin/routes'
-// import rootRoutes from './rootRoutes'
+import examplesRoute from '@/views/examples/routes'
+import rootRoutes from './rootRoutes'
 
-let childRoutes = [
-  // adminRoutes,
-  // rootRoutes,
-  // homeRoutes
-  //...
-]
+let childRoutes = [examplesRoute, rootRoutes]
 
 // const isDev = process.env.NODE_ENV === 'development'
 
